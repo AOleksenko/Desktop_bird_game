@@ -1,5 +1,5 @@
 var cvs = document.getElementById("canvas");
-var ctx = cvs.getContext("2d");// так как игра у нас в 2D
+var ctx = cvs.getContext("2d");
 
 var bird = new Image();
 var bg = new Image();
@@ -7,7 +7,6 @@ var fg = new Image();
 var pipeUp = new Image();
 var pipeBottom = new Image();
 
-//Звук
 var fly = new Audio();
 var score_audio = new Audio();
 
@@ -23,14 +22,13 @@ pipeBottom.src ="img/pipeBottom.png";
 
 var gap =90;
 
-//При нажатии на люьую кнопку
-document.addEventListener("keydown" ,moveUp);// тут мы вызвали функцию moveUp
+document.addEventListener("keydown" ,moveUp);
 
 function moveUp(){
 	yPos -= 30;
-	fly.play();//play - метод
+	fly.play();
 }
-//Наши блоки
+
 var pipe =[];
 pipe[0]={
 	x:cvs.width,
@@ -39,7 +37,6 @@ pipe[0]={
 
 var score = 0;
 
-// Позиции птички
 var xPos = 10;
 var yPos = 150;
 var grav = 1.5;
@@ -61,7 +58,6 @@ function draw() {
 		});
 	}
 
-	//Отслеживание прикосновений
 	if(xPos + bird.width >=pipe[i].x
 		&& xPos<= pipe[i].x + pipeUp.width
 		&& (yPos<= pipe[i].y+pipeUp.height
@@ -78,7 +74,7 @@ function draw() {
 
 	ctx.drawImage(fg,0,cvs.height - fg.height);
 
-	ctx.drawImage(bird,xPos,yPos);// 4 и 5 параметр єто ширина и вісота обїекта
+	ctx.drawImage(bird,xPos,yPos);
 
 	yPos += grav;
 
